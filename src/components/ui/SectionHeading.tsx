@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
 
-export function Eyebrow({ children, className }: { children: string; className?: string }) {
+export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div className={cn("flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-primary", className)}>
       <span className="h-px w-8 bg-primary" />
