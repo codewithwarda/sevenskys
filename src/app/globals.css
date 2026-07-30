@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 48 36 138;
+  --color-primary-dark: 30 22 96;
+  --color-ink: 32 30 40;
+  --color-slate: 95 90 89;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(167 167 167) transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FBFBFA;
+  color: #201E28;
+  font-feature-settings: "ss01" 1, "cv01" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container-edge {
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .container-edge {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Blueprint grid watermark, referencing the technical grid motif from SevenSkys catalogues */
+.bp-grid {
+  background-image:
+    linear-gradient(to right, rgba(48, 36, 138, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 36, 138, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bp-grid-fine {
+  background-image:
+    linear-gradient(to right, rgba(32, 30, 40, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 30, 40, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.underline-offset-fine {
+  text-underline-offset: 4px;
+}
+
+::selection {
+  background-color: #30248A;
+  color: #FFFFFF;
+}
+
+/* Fixed film-grain texture — adds tactile depth instead of flat colour fields */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Sweep-fill hover used on primary buttons */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--btn-sweep-color, #141046);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-sweep:hover::before {
+  transform: translateX(0);
+}
+
+/* Diagonal clip used to break rectangle-on-rectangle section rhythm */
+.clip-diagonal-left {
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 1023px) {
+  .clip-diagonal-left {
+    clip-path: none;
+  }
+}
