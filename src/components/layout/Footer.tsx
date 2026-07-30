@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { BrandMark } from "@/components/graphics/BrandMark";
 import { BlueprintGrid } from "@/components/graphics/BlueprintGrid";
 import { primaryNav, footerServiceLinks } from "@/lib/data/nav";
 import { SITE, yearsInBusiness } from "@/lib/utils";
@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Link href="/" className="flex items-center gap-3 text-white">
-              <BrandMark className="h-10 w-auto" />
+              <Image src="/brand/mark.png" alt="SevenSkys" width={40} height={42} className="h-10 w-auto" />
               <span className="font-display text-lg font-bold">
                 SEVEN<span className="text-white/60">SKYS</span>
               </span>

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
-import { BrandMark } from "@/components/graphics/BrandMark";
 import { primaryNav } from "@/lib/data/nav";
 import { SITE } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -50,7 +50,7 @@ export function Header() {
       >
         <div className="container-edge flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <BrandMark className="h-10 w-auto text-ink" />
+            <Image src="/brand/mark.png" alt="SevenSkys" width={40} height={42} className="h-10 w-auto" priority />
             <span className="hidden font-display text-lg font-bold leading-none tracking-tight text-ink sm:block">
               SEVEN<span className="text-primary">SKYS</span>
               <span className="mt-0.5 block font-mono text-[9px] font-normal uppercase tracking-[0.25em] text-slate">
