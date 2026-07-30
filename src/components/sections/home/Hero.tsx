@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/SectionHeading";
+import { BrandMark } from "@/components/graphics/BrandMark";
 import { ContrailField } from "@/components/graphics/ContrailField";
 import { SkylineSilhouette } from "@/components/graphics/SkylineSilhouette";
 import { GhostNumeral } from "@/components/graphics/GhostNumeral";
@@ -102,7 +102,7 @@ export function Hero() {
           >
             <div className="relative flex h-40 w-40 items-center justify-center rounded-full border border-white/15">
               <div className="absolute inset-3 rounded-full border border-dashed border-white/20 animate-[spin_40s_linear_infinite] motion-reduce:animate-none" />
-              <Image src="/brand/mark.png" alt="SevenSkys" width={96} height={101} className="h-24 w-auto" />
+              <BrandMark className="h-24 w-auto text-white" />
             </div>
             <p className="max-w-xs font-mono text-[11px] uppercase tracking-[0.3em] text-white/60">
               Passenger Transport &middot; Towing &amp; Recovery &middot; Heavy Equipment
