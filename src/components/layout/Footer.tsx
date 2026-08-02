@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { BlueprintGrid } from "@/components/graphics/BlueprintGrid";
 import { primaryNav, footerServiceLinks } from "@/lib/data/nav";
 import { SITE, yearsInBusiness } from "@/lib/utils";
@@ -23,24 +23,6 @@ export function Footer() {
               passenger transport, towing &amp; recovery, and heavy equipment hire built on
               {" "}{yearsInBusiness()}+ years of on-road experience.
             </p>
-            <div className="mt-8 flex gap-3">
-              {[
-                { href: SITE.social.instagram, icon: Instagram, label: "Instagram" },
-                { href: SITE.social.linkedin, icon: Linkedin, label: "LinkedIn" },
-                { href: SITE.social.facebook, icon: Facebook, label: "Facebook" },
-              ].map(({ href, icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/60 transition-colors hover:border-white/40 hover:text-white"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
           <div>

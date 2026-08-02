@@ -60,7 +60,6 @@ export function localBusinessSchema() {
       "@type": "Country",
       name: "United Arab Emirates",
     },
-    sameAs: [SITE.social.instagram, SITE.social.linkedin, SITE.social.facebook],
   };
 }
 

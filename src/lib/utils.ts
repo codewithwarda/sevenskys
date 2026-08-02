@@ -20,11 +20,6 @@ export const SITE = {
     city: "Dubai",
     country: "United Arab Emirates",
   },
-  social: {
-    instagram: "https://instagram.com/sevenskys",
-    linkedin: "https://linkedin.com/company/sevenskys",
-    facebook: "https://facebook.com/sevenskys",
-  },
 } as const;
 
 export function yearsInBusiness(): number {

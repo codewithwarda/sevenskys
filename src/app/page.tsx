@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/home/Hero";
+import { QuickQuote } from "@/components/sections/home/QuickQuote";
 import { TrustBar } from "@/components/sections/home/TrustBar";
 import { Divisions } from "@/components/sections/home/Divisions";
 import { FleetTeaser } from "@/components/sections/home/FleetTeaser";
@@ -26,6 +27,7 @@ export default function HomePage() {
         }}
       />
       <Hero />
+      <QuickQuote />
       <TrustBar />
       <Divisions />
       <FleetTeaser />
