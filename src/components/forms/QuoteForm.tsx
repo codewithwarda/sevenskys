@@ -15,6 +15,7 @@ export function QuoteForm() {
   const preselected = searchParams.get("service") ?? "";
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,6 +26,7 @@ export function QuoteForm() {
     const phone = String(form.get("phone") ?? "");
     const service = String(form.get("service") ?? "");
     const details = String(form.get("details") ?? "");
+    const website = String(form.get("website") ?? ""); // honeypot
 
     const nextErrors: Record<string, string> = {};
     if (!required(name)) nextErrors.name = "Please enter your name.";
@@ -34,16 +36,21 @@ export function QuoteForm() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    setServerError(null);
     setStatus("loading");
     try {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, phone, service, details }),
+        body: JSON.stringify({ name, company, email, phone, service, details, website }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Request failed");
+      }
       setStatus("success");
-    } catch {
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : null);
       setStatus("error");
     }
   }
@@ -81,9 +88,18 @@ export function QuoteForm() {
         ))}
       </SelectField>
       <TextAreaField label="Route, headcount or job details" name="details" rows={5} />
+      {/* Honeypot: hidden from real visitors, catches basic bots */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden"
+      />
       {status === "error" && (
         <p role="alert" className="text-sm text-red-600">
-          Something went wrong sending your request. Please try again or call us directly.
+          {serverError || "Something went wrong sending your request. Please try again or call us directly."}
         </p>
       )}
       <Button type="submit" showArrow={false} className="justify-center sm:w-auto">

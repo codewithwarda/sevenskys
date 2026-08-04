@@ -19,7 +19,7 @@ export function CTABand() {
             Ready to put your route in reliable hands?
           </h2>
           <div className="flex flex-wrap items-center gap-4">
-            <Button href="/request-a-quote" className="bg-white text-primary" sweepColor="#EDEBF8">
+            <Button href="/request-a-quote" variant="inverted" sweepColor="#EDEBF8">
               Request a Quote
             </Button>
             <Button href={`tel:${SITE.phonePrimary.replace(/\s/g, "")}`} variant="outline" className="border-white/40 text-white hover:border-white hover:text-white">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     path: "/",
   }),
   metadataBase: new URL("https://www.sevenskys.co"),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#141046",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

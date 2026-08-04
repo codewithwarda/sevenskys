@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { BlueprintGrid } from "@/components/graphics/BlueprintGrid";
 import { RouteDivider } from "@/components/graphics/RouteDivider";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Page Not Found",
+  description: "The page you're looking for doesn't exist. Head back to the SevenSkys homepage.",
+  path: "/404",
+  noIndex: true,
+});
 
 export default function NotFound() {
   return (

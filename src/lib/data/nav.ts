@@ -4,7 +4,6 @@ export const primaryNav = [
   { label: "Fleet", href: "/fleet" },
   { label: "Industries", href: "/industries" },
   { label: "Why SevenSkys", href: "/why-sevenskys" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

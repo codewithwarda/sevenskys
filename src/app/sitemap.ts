@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/fleet",
     "/industries",
     "/why-sevenskys",
-    "/gallery",
     "/contact",
     "/request-a-quote",
     "/privacy-policy",
