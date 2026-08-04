@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendEnquiryEmail } from "@/lib/email";
-import { getClientIp, isHoneypotFilled, isRateLimited } from "@/lib/spam";
+import { getClientIp, isDisallowedOrigin, isHoneypotFilled, isRateLimited } from "@/lib/spam";
 import { isValidEmail, isValidPhone, required } from "@/lib/validation";
 import { getServiceBySlug } from "@/lib/data/services";
 
@@ -15,6 +15,10 @@ interface QuotePayload {
 }
 
 export async function POST(request: Request) {
+  if (isDisallowedOrigin(request)) {
+    return NextResponse.json({ ok: false, error: "Request blocked." }, { status: 403 });
+  }
+
   let body: Partial<QuotePayload>;
   try {
     body = (await request.json()) as Partial<QuotePayload>;
