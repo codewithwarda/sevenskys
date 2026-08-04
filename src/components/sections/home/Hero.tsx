@@ -83,7 +83,7 @@ export function Hero() {
         </div>
 
         {/* Right: fleet photo panel */}
-        <div className="relative flex min-h-[460px] items-end overflow-hidden bg-[#141046] lg:min-h-full lg:clip-diagonal-left">
+        <div className="relative flex min-h-[460px] items-end overflow-hidden bg-primary-deep lg:min-h-full lg:clip-diagonal-left">
           <motion.div
             initial={{ opacity: 0, scale: 1.06 }}
             animate={{ opacity: 1, scale: 1 }}

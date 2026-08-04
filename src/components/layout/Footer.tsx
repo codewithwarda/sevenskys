@@ -7,7 +7,7 @@ import { SITE, yearsInBusiness } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#141046] text-white/70">
+    <footer className="relative overflow-hidden bg-primary-deep text-white/70">
       <BlueprintGrid className="opacity-40" />
       <div className="container-edge relative py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">

@@ -3,17 +3,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { primaryNav } from "@/lib/data/nav";
 import { SITE } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 
+function isNavItemActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const mobileNavRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -28,6 +34,47 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+  }, [open]);
+
+  // Trap keyboard focus inside the mobile menu while it's open, and restore
+  // it to the toggle button on close, so keyboard/screen-reader users can't
+  // tab past the visible menu into content sitting behind it.
+  useEffect(() => {
+    if (!open) return;
+    const container = mobileNavRef.current;
+    if (!container) return;
+
+    const getFocusable = () =>
+      Array.from(
+        container.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+
+    const focusable = getFocusable();
+    focusable[0]?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = getFocusable();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   return (
@@ -61,7 +108,7 @@ export function Header() {
 
           <nav className="hidden items-center gap-1 lg:flex">
             {primaryNav.map((item, i) => {
-              const active = pathname === item.href;
+              const active = isNavItemActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
@@ -104,6 +151,10 @@ export function Header() {
 
       {/* Mobile overlay menu */}
       <div
+        ref={mobileNavRef}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!open}
         className={cn(
           "fixed inset-0 z-40 bg-ink text-white transition-opacity duration-300 lg:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"

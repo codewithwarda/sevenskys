@@ -45,9 +45,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="font-body antialiased">
+        <a
+          href="#main-content"
+          className="sr-only z-[100] bg-primary px-4 py-3 font-mono text-sm text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to main content
+        </a>
         <JsonLd data={localBusinessSchema()} />
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppFloat />
         <div className="grain-overlay" />

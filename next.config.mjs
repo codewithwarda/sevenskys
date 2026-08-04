@@ -4,13 +4,18 @@
 // add something that does (an embed, a tracking pixel, a maps widget), you'll
 // need to add its domain to the matching directive below or it will be
 // silently blocked by the browser.
+const isDev = process.env.NODE_ENV === "development";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   // 'unsafe-inline' is required for Next.js's own hydration scripts and the
   // JSON-LD structured data blocks this site renders; tightening this further
   // means moving to a nonce-based CSP, which needs to be tested against every
   // page before going live.
-  "script-src 'self' 'unsafe-inline'",
+  // 'unsafe-eval' is added ONLY in dev: Next.js's local dev server uses eval()
+  // for hot-reload/fast-refresh, and without it the whole client bundle throws
+  // and the page never hydrates. Production builds don't need or get it.
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   // Framer Motion and several components apply inline style attributes at
   // runtime, so style-src needs 'unsafe-inline' too.
   "style-src 'self' 'unsafe-inline'",

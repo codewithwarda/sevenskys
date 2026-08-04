@@ -13,7 +13,7 @@ const panels = [
 
 export function Divisions() {
   return (
-    <section className="relative overflow-hidden bg-[#141046] py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-primary-deep py-24 lg:py-32">
       <BlueprintGrid className="opacity-30" />
       <Container className="relative">
         <Eyebrow>What We Run</Eyebrow>

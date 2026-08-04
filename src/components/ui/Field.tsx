@@ -19,6 +19,12 @@ export function TextField({
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate">
         {label}
+        {props.required && (
+          <span className="text-primary" aria-hidden="true">
+            {" "}
+            *
+          </span>
+        )}
       </label>
       <input
         id={id}
@@ -51,6 +57,12 @@ export function TextAreaField({
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate">
         {label}
+        {props.required && (
+          <span className="text-primary" aria-hidden="true">
+            {" "}
+            *
+          </span>
+        )}
       </label>
       <textarea
         id={id}
@@ -84,6 +96,12 @@ export function SelectField({
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate">
         {label}
+        {props.required && (
+          <span className="text-primary" aria-hidden="true">
+            {" "}
+            *
+          </span>
+        )}
       </label>
       <select
         id={id}
