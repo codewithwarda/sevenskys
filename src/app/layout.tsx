@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       "SevenSkys Group of Companies has delivered passenger transport, towing & recovery, and heavy equipment hire across the UAE since 2006. Request a quote today.",
     path: "/",
   }),
-  metadataBase: new URL("https://www.sevenskys.co"),
+  metadataBase: new URL("https://www.sevenskysgroup.com"),
 };
 
 export const viewport: Viewport = {

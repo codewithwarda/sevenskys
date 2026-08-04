@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 export const SITE = {
   name: "SevenSkys Group of Companies",
   shortName: "SevenSkys",
-  domain: "https://www.sevenskys.co",
+  domain: "https://www.sevenskysgroup.com",
   founded: 2006,
   phonePrimary: "+971 4 220 7470",
   phoneMobile: "+971 50 362 5642",
