@@ -6,6 +6,7 @@ import { Divisions } from "@/components/sections/home/Divisions";
 import { FleetTeaser } from "@/components/sections/home/FleetTeaser";
 import { StatsLedger } from "@/components/sections/home/StatsLedger";
 import { WhyUs } from "@/components/sections/home/WhyUs";
+import { FAQ } from "@/components/sections/home/FAQ";
 import { CTABand } from "@/components/sections/home/CTABand";
 import { JsonLd, buildMetadata } from "@/lib/seo";
 
@@ -33,6 +34,7 @@ export default function HomePage() {
       <FleetTeaser />
       <StatsLedger />
       <WhyUs />
+      <FAQ />
       <CTABand />
     </>
   );

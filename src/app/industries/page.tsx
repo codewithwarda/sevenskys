@@ -32,7 +32,11 @@ export default function IndustriesPage() {
               <div key={industry.slug} className="flex flex-col justify-between gap-6 bg-paper p-8">
                 <div>
                   <span className="font-mono text-xs text-silver">{String(i + 1).padStart(2, "0")}</span>
-                  <h2 className="mt-3 font-display text-lg font-semibold text-ink">{industry.name}</h2>
+                  <h2 className="mt-3 font-display text-lg font-semibold text-ink">
+                    <Link href={`/industries/${industry.slug}`} className="transition-colors hover:text-primary">
+                      {industry.name}
+                    </Link>
+                  </h2>
                   <p className="mt-2 text-[13px] leading-relaxed text-slate">{industry.description}</p>
                 </div>
                 <ul className="flex flex-wrap gap-2">
