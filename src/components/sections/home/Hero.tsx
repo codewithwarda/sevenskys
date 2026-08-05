@@ -100,14 +100,6 @@ export function Hero() {
             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#141046] via-[#141046]/20 to-transparent" />
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="relative z-10 w-full px-8 pb-8 text-center font-mono text-[11px] uppercase tracking-[0.3em] text-white/70 lg:pb-10"
-          >
-            Passenger Transport &middot; Towing &amp; Recovery &middot; Heavy Equipment
-          </motion.p>
         </div>
       </div>
     </section>

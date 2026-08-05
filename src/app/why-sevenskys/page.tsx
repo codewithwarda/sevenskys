@@ -63,7 +63,7 @@ export default function WhySevenSkysPage() {
             <div className="grid grid-cols-3 bg-ink text-white">
               <div className="p-4 font-mono text-[11px] uppercase tracking-[0.15em] text-white/50">Criteria</div>
               <div className="p-4 font-mono text-[11px] uppercase tracking-[0.15em] text-white/50">Typical Supplier</div>
-              <div className="p-4 font-mono text-[11px] uppercase tracking-[0.15em] text-primary">SevenSkys</div>
+              <div className="p-4 font-mono text-[11px] uppercase tracking-[0.15em] text-primary-tint">SevenSkys</div>
             </div>
             {comparison.map((row, i) => (
               <div key={row.row} className={`grid grid-cols-3 ${i % 2 === 1 ? "bg-white" : "bg-paper"}`}>
